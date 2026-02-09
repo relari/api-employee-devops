@@ -115,7 +115,7 @@ class EmployeeServiceImplTest {
         var employee = DataMocks.buildEmployee();
 
         Mockito.when(employeeDao.findByDocument(Mockito.any()))
-                .thenReturn(Optional.of(employee));
+                .thenReturn(Optional.empty());
 
         employeeDao.save(Mockito.any());
 
@@ -127,14 +127,16 @@ class EmployeeServiceImplTest {
     @Test
     void save_failed() {
 
-        Mockito.when(employeeDao.findByDocument(Mockito.any()))
-                .thenThrow(ApiException.of(ErrorCategory.DOCUMENT_NOT_FOUND));
-
         var employee = DataMocks.buildEmployee();
 
-        employeeService.save(employee);
+        Mockito.when(employeeDao.findByDocument(Mockito.any()))
+                .thenReturn(Optional.of(employee));
 
-        assertNotNull(employee);
+        ApiException apiException = Assertions.assertThrows(
+                ApiException.class, () -> employeeService.save(employee)
+        );
+
+        assertNotNull(apiException.getMessage());
     }
 
     @Test
