@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  # Configuración de Jenkins
+  # Jenkins Configuration
   jenkins:
     container_name: JENKINS_DEV
     image: 'jenkins/jenkins:jdk11'
@@ -9,11 +9,28 @@ services:
       - "8080:8080"
       - "50000:50000"
     volumes:
-      - c:\jenkins\jenkins_home:/var/jenkins
+      - c:\project\api-employee-devops\jenkins\data:/var/jenkins_home
 
-  # Configuración de SonarQube
+  # SonarQube Configuration
   sonarqube:
     container_name: SONARQUBE_DEV
     image: 'sonarqube:community'
     ports:
       - "9000:9000"
+    volumes:
+      - c:\project\api-employee-devops\sonarqube\data:/opt/sonarqube/data
+      - c:\project\api-employee-devops\sonarqube\extensions:/opt/sonarqube/extensions
+
+  # MySQL Configuration
+  mysql:
+    container_name: MYSQL_DEV
+    image: 'mysql:8.0-oracle'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: employee_db
+      MYSQL_USER: relari
+      MYSQL_PASSWORD: admindb8_relari
+    ports:
+      - "3306:3306"
+    volumes:
+      - c:\project\api-employee-devops\mysql\data:/var/lib/mysql
