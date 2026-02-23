@@ -1,5 +1,6 @@
-DB_USER: sa
-DB_PASS: 123456
+DB_USERNAME: relari
+DB_PASSWORD: admindb8_relari
+DB_NAME: employee_db
 
 APP_PORT: 8081
 

@@ -13,6 +13,7 @@ public class Constants {
     public static final String POINT = ".";
     public static final String ARROBA = "@";
     public static final int ZERO = 0;
+    public static final int ONE = 1;
 
     public static final String REGEXP_ONLY_LETTERS = "[a-zA-Z]*";
     public static final String REGEXP_ONLY_NUMBER = "\\d+";
@@ -31,5 +32,10 @@ public class Constants {
 
     public static final Integer SUCCESS_STATUS = 200;
     public static final String SUCCESS_CODE = "OK";
+
+    public static final String HEADER_REQUEST_ID = "Request-Id";
+    public static final String HEADER_USER_ID = "User-Id";
+    public static final String HEADER_SESSION_ID = "Session-Id";
+    public static final String HEADER_X_FORWARDED_FOR = "X-Forwarded-For";
 
 }
