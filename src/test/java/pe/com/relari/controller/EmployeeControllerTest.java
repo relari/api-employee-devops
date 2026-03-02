@@ -3,9 +3,9 @@ package pe.com.relari.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.anyInt;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.AfterEach;
 import pe.com.relari.employee.service.EmployeeService;
 import java.util.Collections;
 
@@ -24,9 +24,11 @@ class EmployeeControllerTest {
     @InjectMocks
     private EmployeeController controller;
 
+    private AutoCloseable closeable;
+
     @BeforeEach
     void init() {
-        MockitoAnnotations.openMocks(this);
+        closeable = MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -159,4 +161,10 @@ class EmployeeControllerTest {
         assertNotNull(id);
 
     }
+
+    @AfterEach
+    void end() throws Exception {
+        closeable.close();
+    }
+
 }
