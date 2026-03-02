@@ -4,20 +4,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import pe.com.relari.employee.dao.impl.EmployeeDaoImpl;
 import pe.com.relari.employee.dao.repository.EmployeeRepository;
 import pe.com.relari.employee.exception.ApiException;
 import pe.com.relari.employee.util.DataMocks;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.util.Collections;
 import java.util.Optional;
 
+@ExtendWith(MockitoExtension.class)
 class EmployeeDaoTest {
 
     @Mock
@@ -25,11 +26,6 @@ class EmployeeDaoTest {
 
     @InjectMocks
     private EmployeeDaoImpl employeeDao;
-
-    @BeforeEach
-    void init() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     void findAll() {
