@@ -2,7 +2,14 @@ package pe.com.relari.employee.model.api;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-public record CompanyResponse (
+/**
+ * record: CompanyResponse.
+ *
+ * @param jobTitle {@link String}
+ * @param salary {@link Double}
+ */
+
+public record CompanyResponse(
 
     @Schema(
             description = "Cargo del Empleado",

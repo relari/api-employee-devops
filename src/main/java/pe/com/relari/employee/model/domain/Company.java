@@ -1,11 +1,16 @@
 package pe.com.relari.employee.model.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pe.com.relari.employee.model.api.CompanyRequest;
+
+/**
+ * Class: Company.
+ *
+ * @author Relari
+ */
 
 @Getter
 @Setter
@@ -13,12 +18,17 @@ import pe.com.relari.employee.model.api.CompanyRequest;
 @AllArgsConstructor(staticName = "of")
 public class Company {
 
-    private JobTitle jobTitle;
-    private Double salary;
+  private JobTitle jobTitle;
+  private Double salary;
 
-    public Company(CompanyRequest companyRequest) {
-        this.jobTitle = JobTitle.valueOf(companyRequest.getJobTitle());
-        this.salary = companyRequest.getSalary();
-    }
+  /**
+   * Constructor: Address.
+   *
+   * @param companyRequest {@link CompanyRequest}
+   */
+  public Company(CompanyRequest companyRequest) {
+    this.jobTitle = JobTitle.valueOf(companyRequest.getJobTitle());
+    this.salary = companyRequest.getSalary();
+  }
 
 }

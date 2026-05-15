@@ -9,6 +9,7 @@ import java.util.Optional;
 
 /**
  * Interface: EmployeeRepository.
+ *
  * @version 1.0.0
  * @author Relari
  */
@@ -16,8 +17,8 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Integer> {
 
-    Optional<EmployeeEntity> findByDocumentTypeAndDocumentNumber(
-            DocumentType documentType, String documentNumber
-    );
+  Optional<EmployeeEntity> findByDocumentTypeAndDocumentNumber(
+      DocumentType documentType, String documentNumber
+  );
 
 }

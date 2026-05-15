@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Class: EmployeeApplication.
+ *
  * @author Relari
  */
 

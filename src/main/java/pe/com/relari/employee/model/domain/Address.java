@@ -8,6 +8,7 @@ import pe.com.relari.employee.model.api.AddressRequest;
 
 /**
  * Class: Address.
+ *
  * @author RLR
  */
 
@@ -20,6 +21,11 @@ public class Address {
   private String email;
   private String phoneNumber;
 
+  /**
+   * Constructor: Address.
+   *
+   * @param addressRequest {@link AddressRequest}
+   */
   public Address(AddressRequest addressRequest) {
     this.email = addressRequest.getEmail();
     this.phoneNumber = addressRequest.getPhoneNumber();
