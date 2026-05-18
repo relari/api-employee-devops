@@ -1,0 +1,32 @@
+#application:
+#  errors:
+#    code: EM
+#    categories:
+#      EMPLOYEE_SAVE_FAILED:
+#        code: 'EM001'
+#        description: 'Error al guardar al empleado.'
+#        status: 500
+#      EMPLOYEE_NOT_FOUND:
+#        code: 'EM002'
+#        description: 'Empleado no encontrado.'
+#        status: 404
+#      EMPLOYEE_UPDATE_FAILED:
+#        code: 'EM003'
+#        description: 'Error al actualizar al empleado.'
+#        status: 500
+#      EMPLOYEE_INACTIVATED:
+#        code: 'EM004'
+#        description: 'Empleado inactivado.'
+#        status: 409
+#      EMPLOYEE_ACTIVATED:
+#        code: 'EM005'
+#        description: 'Empleado activado.'
+#        status: 409
+#      DOCUMENT_NOT_FOUND:
+#        code: 'EM006'
+#        description: 'Documento no encontrado.'
+#        status: 500
+#      DOCUMENT_REGISTERED:
+#        code: 'EM007'
+#        description: 'Documento registrado.'
+#        status: 500

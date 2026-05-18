@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: API Employee DevOps
+  version: "1.0.0"
+  description: API CRUD para empleados
+servers:
+  - url: http://localhost:8080
+paths:
+  /employees:
+    get:
+      summary: Listar empleados
+      responses:
+        "200":
+          description: Lista de empleados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+    post:
+      summary: Crear empleado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreate'
+      responses:
+        "201":
+          description: Empleado creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+  /employees/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+    get:
+      summary: Obtener empleado por id
+      responses:
+        "200":
+          description: Empleado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        "404":
+          description: No encontrado
+    put:
+      summary: Actualizar empleado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeUpdate'
+      responses:
+        "200":
+          description: Empleado actualizado
+    delete:
+      summary: Eliminar empleado
+      responses:
+        "204":
+          description: Eliminado
+components:
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        position:
+          type: string
+      required: [id, firstName, lastName, email]
+    EmployeeCreate:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        position:
+          type: string
+      required: [firstName, lastName, email]
+    EmployeeUpdate:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        position:
+          type: string
+
