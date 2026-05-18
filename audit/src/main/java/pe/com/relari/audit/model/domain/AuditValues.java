@@ -1,4 +1,4 @@
-package pe.com.relari.audit.model;
+package pe.com.relari.audit.model.domain;
 
 import lombok.Builder;
 import lombok.Getter;

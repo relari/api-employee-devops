@@ -3,7 +3,7 @@
 //import org.springframework.cloud.openfeign.FeignClient;
 //import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestBody;
-//import pe.com.relari.employee.dao.webservice.model.AuditRequest;
+//import pe.com.relari.audit.model.api.AuditRequest;
 //
 //@FeignClient(
 //        name = "audit-api",

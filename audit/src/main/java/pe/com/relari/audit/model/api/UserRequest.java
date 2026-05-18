@@ -1,4 +1,4 @@
-package pe.com.relari.employee.dao.webservice.model;
+package pe.com.relari.audit.model.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Class: ApplicationRequest.
+ * Class: UserRequest.
  *
  * @author Relari
  */
@@ -15,9 +15,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApplicationRequest {
+public class UserRequest {
 
-  private String name;
-  private String version;
+  private String id;
+  private String ip;
 
 }

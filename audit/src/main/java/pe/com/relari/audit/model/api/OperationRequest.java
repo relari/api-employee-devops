@@ -1,4 +1,4 @@
-package pe.com.relari.employee.dao.webservice.model;
+package pe.com.relari.audit.model.api;
 
 import lombok.Builder;
 import lombok.Getter;
