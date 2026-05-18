@@ -9,7 +9,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import pe.com.relari.commons.validation.IdPathParameter;
+//import pe.com.relari.commons.validation.IdPathParameter;
 import pe.com.relari.error.model.ErrorResponse;
 import pe.com.relari.employee.model.api.AddressResponse;
 import pe.com.relari.employee.model.api.EmployeeRequest;
@@ -70,7 +70,7 @@ public interface EmployeeApi {
             })
     @GetMapping(path = "/{id}")
     EmployeeResponse findById(
-            @IdPathParameter
+//            @IdPathParameter
             @Pattern(regexp = Regex.REGEXP_ONLY_NUMBER)
             @PathVariable(name = "id") String id);
 
@@ -95,7 +95,7 @@ public interface EmployeeApi {
             })
     @GetMapping(path = "/{id}/address")
     AddressResponse getAddressById(
-            @IdPathParameter
+//            @IdPathParameter
             @Pattern(regexp = Regex.REGEXP_ONLY_NUMBER)
             @PathVariable(name = "id") String id);
 
@@ -143,7 +143,7 @@ public interface EmployeeApi {
             })
     @DeleteMapping(path = "/{id}")
     void deleteById(
-            @IdPathParameter
+//            @IdPathParameter
             @Pattern(regexp = Regex.REGEXP_ONLY_NUMBER)
             @PathVariable(name = "id") String id);
 
@@ -171,7 +171,7 @@ public interface EmployeeApi {
             })
     @PatchMapping(path = "/{id}/inactive")
     void inactiveById(
-            @IdPathParameter
+//            @IdPathParameter
             @Pattern(regexp = Regex.REGEXP_ONLY_NUMBER)
             @PathVariable(name = "id") String id);
 
@@ -199,7 +199,7 @@ public interface EmployeeApi {
             })
     @PatchMapping(path = "/{id}/active")
     void activeById(
-            @IdPathParameter
+//            @IdPathParameter
             @Pattern(regexp = Regex.REGEXP_ONLY_NUMBER)
             @PathVariable(name = "id") String id);
 

@@ -13,8 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.util.UriComponentsBuilder;
+import pe.com.relari.commons.constant.Constants;
 import pe.com.relari.employee.model.api.EmployeeRequest;
-import pe.com.relari.employee.util.Constants;
 import pe.com.relari.employee.util.JsonConverter;
 
 import java.util.List;

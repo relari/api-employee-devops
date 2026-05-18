@@ -1,9 +1,9 @@
-//package pe.com.relari.employee.dao;
-//
-//import pe.com.relari.employee.model.example.AuditValues;
-//
-//public interface AuditDao {
-//
-//    void save(AuditValues auditValues);
-//
-//}
+package pe.com.relari.audit.dao;
+
+import pe.com.relari.audit.model.AuditValues;
+
+public interface AuditDao {
+
+    void save(AuditValues auditValues);
+
+}
