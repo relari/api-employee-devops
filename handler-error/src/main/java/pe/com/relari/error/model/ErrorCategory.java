@@ -15,7 +15,7 @@ public class ErrorCategory {
 
   private String code;
   private String description;
-  private Integer status;
+  private String statusCode;
 
 }
 

@@ -1,45 +1,26 @@
 package pe.com.relari.error.exception;
 
-import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import pe.com.relari.error.category.ErrorCatalog;
-
 /**
  * <b>Class:</b> ApiException.<br>
+ * Excepción personalizada para manejar errores controlados de la aplicación.
+ *
+ * Proporciona múltiples constructores para flexibilidad:
+ * - Con ErrorCatalog (errores específicos de negocio)
+ * - Con HttpErrorCode (errores HTTP genéricos)
+ * - Con mensajes personalizados
+ * - Con causes/Throwables para debugging
  *
  * @author Relari
  */
 
-@Getter
 public class ApiException extends RuntimeException {
 
-    @NotNull(message = "Catalog no puede ser nulo")
-    private final ErrorCatalog catalog;
-
-    public ApiException(
-            ErrorCatalog catalog) {
-        super();
-        this.catalog = catalog;
+    public ApiException(String code) {
+        super(code);
     }
 
-    public ApiException(
-            ErrorCatalog catalog,
-            String message) {
-        super(message);
-        this.catalog = catalog;
+    public ApiException(String code, Throwable cause) {
+        super(code, cause);
     }
 
-    public ApiException(
-            ErrorCatalog catalog,
-            Throwable throwable) {
-        super(throwable);
-        this.catalog = catalog;
-    }
-
-    public ApiException(
-            String message,
-            Throwable throwable) {
-        super(message, throwable);
-        this.catalog = null;
-    }
 }

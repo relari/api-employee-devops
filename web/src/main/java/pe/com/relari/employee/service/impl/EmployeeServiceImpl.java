@@ -7,7 +7,7 @@ import pe.com.relari.commons.constant.Constants;
 import pe.com.relari.employee.dao.EmployeeDao;
 import pe.com.relari.employee.model.domain.Employee;
 import pe.com.relari.employee.service.EmployeeService;
-import pe.com.relari.error.category.ErrorCatalog;
+import pe.com.relari.employee.util.category.ErrorCatalog;
 import pe.com.relari.error.exception.ApiException;
 
 /**
@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
   public void save(Employee employee) {
     var response = employeeDao.findByDocument(employee.getDocument());
     if (response.isPresent()) {
-      throw new ApiException(ErrorCatalog.DOCUMENT_REGISTERED);
+      throw new ApiException(ErrorCatalog.DOCUMENT_REGISTERED.name());
     }
     employeeDao.save(employee);
   }
@@ -64,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService {
       employee.setStatus(Constants.INACTIVE);
       employeeDao.save(employee);
     } else {
-      throw new ApiException(ErrorCatalog.EMPLOYEE_INACTIVATED);
+      throw new ApiException(ErrorCatalog.EMPLOYEE_INACTIVATED.name());
     }
   }
 
@@ -75,7 +75,7 @@ public class EmployeeServiceImpl implements EmployeeService {
       employee.setStatus(Constants.ACTIVE);
       employeeDao.save(employee);
     } else {
-      throw new ApiException(ErrorCatalog.EMPLOYEE_ACTIVATED);
+      throw new ApiException(ErrorCatalog.EMPLOYEE_ACTIVATED.name());
     }
   }
 

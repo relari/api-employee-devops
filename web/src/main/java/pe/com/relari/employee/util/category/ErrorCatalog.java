@@ -1,7 +1,4 @@
-package pe.com.relari.error.category;
-
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+package pe.com.relari.employee.util.category;
 
 /**
  * <b>Enum:</b> ErrorCategory.<br>
@@ -9,8 +6,6 @@ import lombok.RequiredArgsConstructor;
  * @author Relari
  */
 
-@Getter
-@RequiredArgsConstructor
 public enum ErrorCatalog {
 
   EMPLOYEE_SAVE_FAILED,
