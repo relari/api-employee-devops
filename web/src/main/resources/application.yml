@@ -1,6 +1,6 @@
 spring:
   application:
-    name: '@project.artifactId@'
+    name: 'api-employee-devops'
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
@@ -152,6 +152,9 @@ management:
       base-path: ${application.api.path}/actuator
       exposure:
         include: health,info,prometheus,loggers
+  metrics:
+    tags:
+      application: ${spring.application.name}
 #    health:
 #      show-details: always
 #      probes:
