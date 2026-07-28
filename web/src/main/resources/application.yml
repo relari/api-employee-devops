@@ -1,0 +1,193 @@
+spring:
+  application:
+    name: 'api-employee-devops'
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: ${DB_USER:sa}
+    password: ${DB_PASS:123456}
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/${DB_NAME:employee_db}?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+#    username: ${DB_USERNAME:relari}
+#    password: ${DB_PASSWORD:admindb8_relari}
+#  jpa:
+#    database: mysql
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
+#        format_sql: true
+
+application:
+  info:
+    name: '@project.name@'
+    version: '@project.version@'
+    description: '@project.description@'
+  api:
+    path: '/api/v1/employees'
+#
+#  headers:
+#    defaults:
+#      - request-id: 'X-Request-ID'
+#      - session-id: 'X-Correlation-ID'
+#      - user-id: 'X-Trace-ID'
+#      - x-forwarded-for: 'X-Forwarded-For'
+#    customs:
+#      request-id: 'X-Custom-Request-ID'
+#      correlation-id: 'X-Custom-Correlation-ID'
+#      user-id: 'X-Custom-User-ID'
+  errors:
+    code: API
+    default_code: 'API999'
+
+    # Configuración de canales (opcional)
+    channels:
+      web:
+        prefix: 'EM-WEB'
+      api:
+        prefix: 'EM-API'
+      mobile:
+        prefix: 'EM-MOB'
+    status:
+      # ========================
+      # Errores HTTP Genéricos
+      # ========================
+      BAD_REQUEST:
+        description: 'Solicitud inválida o incorrecta.'
+        status: 400
+      UNAUTHORIZED:
+        description: 'Autenticación requerida.'
+        status: 401
+      FORBIDDEN:
+        description: 'Acceso denegado.'
+        status: 403
+      NOT_FOUND:
+        description: 'Recurso no encontrado.'
+        status: 404
+      CONFLICT:
+        description: 'Conflicto con el estado actual del recurso.'
+        status: 409
+      INTERNAL_SERVER_ERROR:
+        description: 'Error interno del servidor.'
+        status: 500
+    categories:
+      # ========================
+      # Errores de Empleado
+      # ========================
+      EMPLOYEE_NOT_FOUND:
+        code: 'EM002'              # Código por defecto
+        description: 'Empleado no encontrado.'
+        status_code: NOT_FOUND
+        # Códigos alternativos por canal (opcional)
+        code_web: 'EM-WEB-002'
+        code_api: 'EM-API-002'
+        code_mobile: 'EM-MOB-002'
+
+      EMPLOYEE_SAVE_FAILED:
+        code: 'EM001'
+        description: 'Error al guardar al empleado.'
+        status_code: INTERNAL_SERVER_ERROR
+
+      EMPLOYEE_UPDATE_FAILED:
+        code: 'EM003'
+        description: 'Error al actualizar al empleado.'
+        status_code: INTERNAL_SERVER_ERROR
+
+      EMPLOYEE_INACTIVATED:
+        code: 'EM004'
+        description: 'Empleado inactivado.'
+        status_code: CONFLICT
+
+      EMPLOYEE_ACTIVATED:
+        code: 'EM005'
+        description: 'Empleado activado.'
+        status_code: CONFLICT
+
+      # ========================
+      # Errores de Documento
+      # ========================
+      DOCUMENT_NOT_FOUND:
+        code: 'EM006'
+        description: 'Documento no encontrado.'
+        status_code: NOT_FOUND
+
+      DOCUMENT_REGISTERED:
+        code: 'EM007'
+        description: 'Documento registrado.'
+        status_code: CONFLICT
+
+#  client:
+#    audit:
+#      base-url: http://localhost:8080/
+
+#feign:
+#  client:
+#    config:
+#      default: # Configuración global
+#        connectTimeout: 2000 # 2 segundos para establecer conexión
+#        readTimeout: 5000    # 5 segundos para esperar la respuesta
+#      audit-api: # Configuración específica para tu cliente de auditoría
+#        connectTimeout: 1000
+#        readTimeout: 2000
+
+management:
+  endpoints:
+    web:
+      base-path: ${application.api.path}/actuator
+      exposure:
+        include: health,info,prometheus,loggers
+  metrics:
+    tags:
+      application: ${spring.application.name}
+#    health:
+#      show-details: always
+#      probes:
+#        enabled: true
+#      group:
+#        liveness:
+#          show-details: always
+#        readiness:
+#          show-details: always
+  info:
+    env:
+      enabled: true
+#  GET /q/health/live     // Liveness probe (¿está vivo?)
+#  GET /q/health/ready    // Readiness probe (¿puede recibir tráfico?)
+#  GET /q/health/started  // Startup probe (¿terminó de iniciar?)
+info:
+  app:
+    name: '${spring.application.name}'
+    description: '${application.info.description}'
+    version: '${application.info.version}'
+
+springdoc:
+  api-docs:
+    path: '${application.api.path}/openapi'
+
+  swagger-ui:
+    path: '${application.api.path}/swagger-ui.html'
+
+server:
+  error:
+    include-message: always
+  port: ${APP_PORT:8081}
+
+logging:
+  level:
+    'pe.com.relari': ${LOG_LEVEL:TRACE}

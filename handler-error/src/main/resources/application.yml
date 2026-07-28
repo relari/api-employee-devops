@@ -1,0 +1,120 @@
+#spring:
+#  profiles:
+#    active: dev
+#  application:
+#    name: employee-service
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/db_development
+#    username: root
+#    password: ${DB_PASSWORD:1234}
+#
+#logging:
+#  level:
+#    root: INFO
+#    pe.com.relari.error: DEBUG
+#    org.springframework.web: DEBUG
+#
+#application:
+#  errors:
+#    code: APP
+#    default_code: 'APP999'
+#
+#    # Configuración de canales (opcional)
+#    channels:
+#      web:
+#        prefix: 'EM-WEB'
+#      api:
+#        prefix: 'EM-API'
+#      mobile:
+#        prefix: 'EM-MOB'
+#    status:
+#      # ========================
+#      # Errores HTTP Genéricos
+#      # ========================
+#      BAD_REQUEST:
+#        description: 'Solicitud inválida o incorrecta.'
+#        status: 400
+#      UNAUTHORIZED:
+#        description: 'Autenticación requerida.'
+#        status: 401
+#      FORBIDDEN:
+#        description: 'Acceso denegado.'
+#        status: 403
+#      NOT_FOUND:
+#        description: 'Recurso no encontrado.'
+#        status: 404
+#      CONFLICT:
+#        description: 'Conflicto con el estado actual del recurso.'
+#        status: 409
+#      INTERNAL_SERVER_ERROR:
+#        description: 'Error interno del servidor.'
+#        status: 500
+#    categories:
+#      # ========================
+#      # Errores de Empleado
+#      # ========================
+#      EMPLOYEE_NOT_FOUND:
+#        code: 'EM002'              # Código por defecto
+#        description: 'Empleado no encontrado.'
+#        status_code: NOT_FOUND
+#        # Códigos alternativos por canal (opcional)
+#        code_web: 'EM-WEB-002'
+#        code_api: 'EM-API-002'
+#        code_mobile: 'EM-MOB-002'
+#
+#      EMPLOYEE_SAVE_FAILED:
+#        code: 'EM001'
+#        description: 'Error al guardar al empleado.'
+#        status_code: INTERNAL_SERVER_ERROR
+#
+#      EMPLOYEE_UPDATE_FAILED:
+#        code: 'EM003'
+#        description: 'Error al actualizar al empleado.'
+#        status_code: INTERNAL_SERVER_ERROR
+#
+#      EMPLOYEE_INACTIVATED:
+#        code: 'EM004'
+#        description: 'Empleado inactivado.'
+#        status_code: CONFLICT
+#
+#      EMPLOYEE_ACTIVATED:
+#        code: 'EM005'
+#        description: 'Empleado activado.'
+#        status_code: CONFLICT
+#
+#      # ========================
+#      # Errores de Documento
+#      # ========================
+#      DOCUMENT_NOT_FOUND:
+#        code: 'EM006'
+#        description: 'Documento no encontrado.'
+#        status_code: NOT_FOUND
+#
+#      DOCUMENT_REGISTERED:
+#        code: 'EM007'
+#        description: 'Documento registrado.'
+#        status_code: CONFLICT
+#
+## NOTAS SOBRE ESTRUCTURA DE CÓDIGOS:
+##
+## 1. SIMPLE (Actual):
+##    - EM001, EM002, etc.
+##    - Ideal para: Monolito simple
+##
+## 2. CON CANAL (Este archivo):
+##    - EM-WEB-001, EM-API-002, EM-MOB-003
+##    - Ideal para: Multi-canal (Web, API REST, Mobile)
+##    - Ventaja: Identifica de qué canal proviene el error
+##
+## 3. CON MÓDULO:
+##    - EMP-001 (Employee), AUD-001 (Audit), DOC-001 (Document)
+##    - Ideal para: Microservicios con módulos independientes
+##
+## 4. HÍBRIDA (Módulo + Canal):
+##    - EMP-WEB-001, EMP-API-002, AUD-WEB-001
+##    - Ideal para: Arquitectura compleja con múltiples módulos y canales
+#
