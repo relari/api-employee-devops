@@ -10,6 +10,8 @@ import pe.com.relari.error.model.ErrorCategory;
 import pe.com.relari.error.model.ErrorResponse;
 import pe.com.relari.error.model.ErrorStatus;
 
+import static pe.com.relari.commons.constant.Constants.EMPTY;
+
 /**
  * <b>Class:</b> ApplicationProperties.<br>
  *
@@ -30,17 +32,25 @@ public class ErrorProperties {
     @NotNull(message = "Categories cannot be null")
     private Map<String, ErrorCategory> categories;
 
-    public ErrorResponse getError(String errorCode) {
-        ErrorCategory category = this.categories.get(errorCode);
-        if (category == null) {
-            return null;
-        }
+    public ErrorResponse getErrorByCategoryCode(String categoryCode) {
+        ErrorCategory category = this.categories.get(categoryCode);
         ErrorStatus errorStatus = this.status.get(category.getStatusCode());
         return ErrorResponse.builder()
                 .code(category.getCode())
                 .status(errorStatus.getStatus())
                 .description(getDefaultErrorDescription(
                         errorStatus.getDescription(), category.getDescription()
+                ))
+                .build();
+    }
+
+    public ErrorResponse getErrorByStatusCode(String statusCode) {
+        ErrorStatus errorStatus = this.status.get(statusCode);
+        return ErrorResponse.builder()
+                .code(String.format("%s%s",code, errorStatus.getStatus()))
+                .status(errorStatus.getStatus())
+                .description(getDefaultErrorDescription(
+                        errorStatus.getDescription(), EMPTY
                 ))
                 .build();
     }
