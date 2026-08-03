@@ -24,7 +24,6 @@ import static pe.com.relari.commons.constant.Constants.EMPTY;
 @ConfigurationProperties(prefix = "application.errors")
 public class ErrorProperties {
 
-
     private String code;
     private String defaultCode;
     @NotNull(message = "Status cannot be null")
@@ -32,9 +31,17 @@ public class ErrorProperties {
     @NotNull(message = "Categories cannot be null")
     private Map<String, ErrorCategory> categories;
 
+    public ErrorCategory getErrorCategory(String categoryCode) {
+        return this.categories.get(categoryCode);
+    }
+
+    public ErrorStatus getErrorStatus(String statusCode) {
+        return this.status.get(statusCode);
+    }
+
     public ErrorResponse getErrorByCategoryCode(String categoryCode) {
-        ErrorCategory category = this.categories.get(categoryCode);
-        ErrorStatus errorStatus = this.status.get(category.getStatusCode());
+        ErrorCategory category = getErrorCategory(categoryCode);
+        ErrorStatus errorStatus = getErrorStatus(category.getStatusCode());
         return ErrorResponse.builder()
                 .code(category.getCode())
                 .status(errorStatus.getStatus())
@@ -45,7 +52,7 @@ public class ErrorProperties {
     }
 
     public ErrorResponse getErrorByStatusCode(String statusCode) {
-        ErrorStatus errorStatus = this.status.get(statusCode);
+        ErrorStatus errorStatus = getErrorStatus(statusCode);
         return ErrorResponse.builder()
                 .code(String.format("%s%s",code, errorStatus.getStatus()))
                 .status(errorStatus.getStatus())
