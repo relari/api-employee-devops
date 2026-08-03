@@ -1,6 +1,10 @@
 package pe.com.relari.commons.model;
 
+import static pe.com.relari.commons.constant.Constants.SUCCESS_CODE;
+import static pe.com.relari.commons.constant.Constants.SUCCESS_STATUS;
+
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.http.ResponseEntity;
 
 /**
  * Class: EmployeeDetailResponse.
@@ -24,4 +28,16 @@ public record ApiResponse<T> (
 				description = "Data de respuesta.",
 				name = "data")
 		T data
-) {}
+) {
+
+	public static <T> ApiResponse<T> success(T data) {
+		return new ApiResponse<>(
+				SUCCESS_CODE, SUCCESS_STATUS, data
+		);
+	}
+
+	public ResponseEntity<ApiResponse<T>> toResponse() {
+		var entity = success(this.data());
+		return ResponseEntity.status(entity.status()).body(entity);
+	}
+}
