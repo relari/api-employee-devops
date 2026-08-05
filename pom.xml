@@ -7,10 +7,10 @@
          actually be Spring Boot apps. Versions for Spring Boot are provided via
          the BOM below in dependencyManagement. -->
     <groupId>pe.com.relari.fwk.spring</groupId>
-    <artifactId>api-employee-devops</artifactId>
+    <artifactId>relari-spring-module</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>API Employee Devops</name>
+    <name>relari-spring-module</name>
     <description>Employee Management API</description>
     <modules>
         <module>audit</module>
