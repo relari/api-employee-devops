@@ -3,12 +3,12 @@ package pe.com.relari.controller.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import pe.com.relari.commons.constant.Constants;
+import pe.com.relari.commons.utility.DateUtility;
 import pe.com.relari.employee.model.api.EmployeeRequest;
 import pe.com.relari.employee.model.api.EmployeeResponse;
 import pe.com.relari.employee.model.domain.Employee;
-import pe.com.relari.commons.constant.Constants;
-import pe.com.relari.commons.model.ApiResponse;
-import pe.com.relari.commons.utility.DateUtility;
+import pe.com.relari.fwk.spring.support.model.ApiResponse;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -3,7 +3,7 @@ package pe.com.relari.controller;
 import lombok.RequiredArgsConstructor;
 import pe.com.relari.controller.mapper.DomainToDtoMapper;
 import pe.com.relari.employee.model.api.AddressResponse;
-import pe.com.relari.commons.model.ApiResponse;
+import pe.com.relari.fwk.spring.support.model.ApiResponse;
 import pe.com.relari.employee.service.EmployeeService;
 import pe.com.relari.employee.model.api.EmployeeRequest;
 import pe.com.relari.employee.model.api.EmployeeResponse;

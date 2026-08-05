@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import pe.com.relari.employee.dao.EmployeeDao;
 import pe.com.relari.employee.dao.mapper.DomainToEntityMapper;
 import pe.com.relari.employee.dao.repository.EmployeeRepository;
-import pe.com.relari.error.exception.ApiException;
+import pe.com.relari.fwk.spring.handler.error.exception.ApiException;
 import pe.com.relari.employee.util.category.ErrorCatalog;
 import pe.com.relari.employee.model.domain.Document;
 import pe.com.relari.employee.model.domain.Employee;

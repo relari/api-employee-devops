@@ -8,7 +8,7 @@ import pe.com.relari.employee.dao.EmployeeDao;
 import pe.com.relari.employee.model.domain.Employee;
 import pe.com.relari.employee.service.EmployeeService;
 import pe.com.relari.employee.util.category.ErrorCatalog;
-import pe.com.relari.error.exception.ApiException;
+import pe.com.relari.fwk.spring.handler.error.exception.ApiException;
 
 /**
  * Class: EmployeeServiceImpl.

@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Pattern;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 //import pe.com.relari.commons.validation.IdPathParameter;
-import pe.com.relari.error.model.ErrorResponse;
+import pe.com.relari.fwk.spring.handler.error.model.ErrorResponse;
 import pe.com.relari.employee.model.api.AddressResponse;
 import pe.com.relari.employee.model.api.EmployeeRequest;
 import pe.com.relari.employee.model.api.EmployeeResponse;
@@ -42,12 +42,12 @@ public interface EmployeeApi {
                     @ApiResponse(
                             responseCode = "200",
                             content = @Content(
-                                    schema = @Schema(implementation = pe.com.relari.commons.model.ApiResponse.class),
+                                    schema = @Schema(implementation = pe.com.relari.fwk.spring.support.model.ApiResponse.class),
                                     mediaType = MediaType.APPLICATION_JSON_VALUE
                             )
                     )
             })
-    pe.com.relari.commons.model.ApiResponse<List<EmployeeResponse>> findAll2();
+    pe.com.relari.fwk.spring.support.model.ApiResponse<List<EmployeeResponse>> findAll2();
 
     @Operation(
             summary = "Obtiene la informacion de un empleado por el ID.",

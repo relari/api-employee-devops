@@ -6,7 +6,7 @@
          only modules that declare Spring Boot dependencies or the plugin will
          actually be Spring Boot apps. Versions for Spring Boot are provided via
          the BOM below in dependencyManagement. -->
-    <groupId>pe.com.relari</groupId>
+    <groupId>pe.com.relari.fwk.spring</groupId>
     <artifactId>api-employee-devops</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -14,9 +14,8 @@
     <description>Employee Management API</description>
     <modules>
         <module>audit</module>
-        <module>commons-utils</module>
-        <module>handler-error</module>
-        <module>support</module>
+        <module>handler-error-spring</module>
+        <module>support-spring</module>
         <module>web</module>
     </modules>
 
@@ -94,6 +93,11 @@
             <version>${org.mapstruct.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>pe.com.relari.commons</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

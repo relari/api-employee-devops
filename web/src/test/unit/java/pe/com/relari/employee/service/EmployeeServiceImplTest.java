@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pe.com.relari.employee.dao.EmployeeDao;
-import pe.com.relari.error.exception.ApiException;
+import pe.com.relari.fwk.spring.handler.error.exception.ApiException;
 import pe.com.relari.employee.service.impl.EmployeeServiceImpl;
 import pe.com.relari.commons.constant.Constants;
 import pe.com.relari.employee.util.DataMocks;
