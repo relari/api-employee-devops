@@ -17,7 +17,7 @@ public class JsonConverter {
             .findAndRegisterModules()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+            .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
 
     public static <T> T readJsonFromResource(String resourcePath, Class<T> type) throws IOException {
         try (InputStream is = JsonConverter.class.getClassLoader().getResourceAsStream(resourcePath)) {

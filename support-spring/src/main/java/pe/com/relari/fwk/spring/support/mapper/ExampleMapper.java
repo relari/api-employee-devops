@@ -19,22 +19,22 @@ import pe.com.relari.fwk.spring.support.model.ApiResponse;
 public interface ExampleMapper {
 
   @IterableMapping(qualifiedByName = "apiResponse")
-  List<ApiResponse<?>> mapApiResponses(List<ApiHeaders> apiHeaders);
+  List<ApiResponse<String>> mapApiResponses(List<ApiHeaders> apiHeaders);
 
   @Named("apiResponse")
   @Mapping(target = "status", constant = "200")
   @Mapping(target = "code", expression = "java( request.getAppCode() + ' ' + request.getUserId() )")
-  @Mapping(target = "data", defaultValue = "null")
-  ApiResponse<?> apiResponse(ApiHeaders request);
+  @Mapping(target = "data", source = "authorization")
+  ApiResponse<String> apiResponse(ApiHeaders request);
 
   @Mapping(target = "status", constant = "200")
   @Mapping(target = "code", source = "appCode", defaultValue = "API")
-  @Mapping(target = "data", defaultValue = "null")
-  ApiResponse<?> dataValidateDefaultValue(ApiHeaders request);
+  @Mapping(target = "data", source = "authorization")
+  ApiResponse<String> dataValidateDefaultValue(ApiHeaders request);
 
   @Mapping(target = "status", constant = "200")
   @Mapping(target = "code", source = "appCode", defaultExpression = "java(\"API\")")
-  @Mapping(target = "data", defaultValue = "null")
-  ApiResponse<?> dataValidateDefaultExpression(ApiHeaders request);
+  @Mapping(target = "data", source = "authorization")
+  ApiResponse<String> dataValidateDefaultExpression(ApiHeaders request);
 
 }
