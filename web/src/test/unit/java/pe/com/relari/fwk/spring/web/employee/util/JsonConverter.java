@@ -9,30 +9,36 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * <b>Class:</b> JsonConverter.<br>
+ * 
+ * @author Relari.
+ */
+
 public class JsonConverter {
 
-    private JsonConverter() {}
+  private JsonConverter() {}
 
-    private static final ObjectMapper MAPPER = new ObjectMapper()
-            .findAndRegisterModules()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-            .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
+  private static final ObjectMapper MAPPER = new ObjectMapper()
+      .findAndRegisterModules()
+      .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+      .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+      .setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
 
-    public static <T> T readJsonFromResource(String resourcePath, Class<T> type) throws IOException {
-        try (InputStream is = JsonConverter.class.getClassLoader().getResourceAsStream(resourcePath)) {
-            if (is == null) {
-                throw new IOException("Resource not found: " + resourcePath);
-            }
-            return MAPPER.readValue(is, type);
-        }
+  public static <T> T readJsonFromResource(String resourcePath, Class<T> type) throws IOException {
+    try (InputStream is = JsonConverter.class.getClassLoader().getResourceAsStream(resourcePath)) {
+      if (is == null) {
+        throw new IOException("Resource not found: " + resourcePath);
+      }
+      return MAPPER.readValue(is, type);
     }
+  }
 
-    public static <T> T readJson(String json, Class<T> type) throws IOException {
-        return MAPPER.readValue(json, type);
-    }
+  public static <T> T readJson(String json, Class<T> type) throws IOException {
+    return MAPPER.readValue(json, type);
+  }
 
-    public static String toJsonString(Object object) throws JsonProcessingException {
-        return MAPPER.writeValueAsString(object);
-    }
+  public static String toJsonString(Object object) throws JsonProcessingException {
+    return MAPPER.writeValueAsString(object);
+  }
 }

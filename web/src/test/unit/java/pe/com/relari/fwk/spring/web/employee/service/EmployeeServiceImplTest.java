@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pe.com.relari.commons.exception.ApiException;
 import pe.com.relari.fwk.spring.web.employee.dao.EmployeeDao;
-import pe.com.relari.fwk.spring.handler.error.exception.ApiException;
 import pe.com.relari.fwk.spring.web.employee.service.impl.EmployeeServiceImpl;
 import pe.com.relari.commons.constant.Constants;
 import pe.com.relari.fwk.spring.web.employee.util.DataMocks;
@@ -19,182 +19,188 @@ import org.mockito.Mockito;
 import java.util.Collections;
 import java.util.Optional;
 
+/**
+ * <b>Class:</b> EmployeeServiceImplTest.<br>
+ *
+ * @author Relari.
+ */
+
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceImplTest {
 
-    @Mock
-    private EmployeeDao employeeDao;
+  @Mock
+  private EmployeeDao employeeDao;
 
-    @InjectMocks
-    private EmployeeServiceImpl employeeService;
+  @InjectMocks
+  private EmployeeServiceImpl employeeService;
 
-    @Test
-    void findAll() {
+  @Test
+  void findAll() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        Mockito.when(employeeDao.findAll())
-                .thenReturn(Collections.singletonList(employee));
+    Mockito.when(employeeDao.findAll())
+        .thenReturn(Collections.singletonList(employee));
 
-        var employees = employeeService.findAll();
+    var employees = employeeService.findAll();
 
-        assertEquals(employee.getFirstName(), employees.get(0).getFirstName());
-        assertEquals(employee.getFatherLastName(), employees.get(0).getFatherLastName());
-        assertEquals(employee.getMotherLastName(), employees.get(0).getMotherLastName());
-        assertEquals(employee.getGender(), employees.get(0).getGender());
+    assertEquals(employee.getFirstName(), employees.get(0).getFirstName());
+    assertEquals(employee.getFatherLastName(), employees.get(0).getFatherLastName());
+    assertEquals(employee.getMotherLastName(), employees.get(0).getMotherLastName());
+    assertEquals(employee.getGender(), employees.get(0).getGender());
 
-    }
+  }
 
-    @Test
-    void deleteAll() {
+  @Test
+  void deleteAll() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        employeeDao.deleteAll();
+    employeeDao.deleteAll();
 
-        employeeService.deleteAll();
+    employeeService.deleteAll();
 
-        assertNotNull(employee);
+    assertNotNull(employee);
 
-    }
+  }
 
-    @Test
-    void deleteById_success() {
+  @Test
+  void deleteById_success() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(employee);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(employee);
 
-        employeeDao.deleteById(Mockito.anyInt());
+    employeeDao.deleteById(Mockito.anyInt());
 
-        employeeService.deleteById(employee.getIdEmployee());
+    employeeService.deleteById(employee.getIdEmployee());
 
-        assertNotNull(employee);
-    }
+    assertNotNull(employee);
+  }
 
-    @Test
-    void deleteById_failed() {
+  @Test
+  void deleteById_failed() {
 
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(null);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(null);
 
-        Integer id = 1;
+    Integer id = 1;
 
-        employeeService.deleteById(id);
+    employeeService.deleteById(id);
 
-        assertNotNull(id);
-    }
+    assertNotNull(id);
+  }
 
-    @Test
-    void findById() {
+  @Test
+  void findById() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(employee);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(employee);
 
-        var response = employeeService.findById(1);
+    var response = employeeService.findById(1);
 
-        assertEquals(employee.getFirstName(), response.getFirstName());
-        assertEquals(employee.getFatherLastName(), response.getFatherLastName());
-        assertEquals(employee.getMotherLastName(), response.getMotherLastName());
-        assertEquals(employee.getGender(), response.getGender());
+    assertEquals(employee.getFirstName(), response.getFirstName());
+    assertEquals(employee.getFatherLastName(), response.getFatherLastName());
+    assertEquals(employee.getMotherLastName(), response.getMotherLastName());
+    assertEquals(employee.getGender(), response.getGender());
 
-    }
+  }
 
-    @Test
-    void save_success() {
+  @Test
+  void save_success() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        Mockito.when(employeeDao.findByDocument(Mockito.any()))
-                .thenReturn(Optional.empty());
+    Mockito.when(employeeDao.findByDocument(Mockito.any()))
+        .thenReturn(Optional.empty());
 
-        employeeDao.save(Mockito.any());
+    employeeDao.save(Mockito.any());
 
-        employeeService.save(employee);
+    employeeService.save(employee);
 
-        assertNotNull(employee);
-    }
+    assertNotNull(employee);
+  }
 
-    @Test
-    void save_failed() {
+  @Test
+  void save_failed() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        Mockito.when(employeeDao.findByDocument(Mockito.any()))
-                .thenReturn(Optional.of(employee));
+    Mockito.when(employeeDao.findByDocument(Mockito.any()))
+        .thenReturn(Optional.of(employee));
 
-        ApiException apiException = Assertions.assertThrows(
-                ApiException.class, () -> employeeService.save(employee)
-        );
+    ApiException apiException = Assertions.assertThrows(
+        ApiException.class, () -> employeeService.save(employee)
+    );
 
-        assertNotNull(apiException.getMessage());
-    }
+    assertNotNull(apiException.getMessage());
+  }
 
-    @Test
-    void inactive_success() {
+  @Test
+  void inactive_success() {
 
-        var employee = DataMocks.buildEmployee();
+    var employee = DataMocks.buildEmployee();
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(employee);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(employee);
 
-        employeeDao.save(Mockito.any());
+    employeeDao.save(Mockito.any());
 
-        employeeService.inactivateById(employee.getIdEmployee());
+    employeeService.inactivateById(employee.getIdEmployee());
 
-        assertNotNull(employee);
-    }
+    assertNotNull(employee);
+  }
 
-    @Test
-    void inactive_error() {
+  @Test
+  void inactive_error() {
 
-        var employee = DataMocks.buildEmployee();
-        employee.setStatus(Constants.INACTIVE);
+    var employee = DataMocks.buildEmployee();
+    employee.setStatus(Constants.INACTIVE);
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(employee);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(employee);
 
-        Integer id = employee.getIdEmployee();
+    Integer id = employee.getIdEmployee();
 
-        ApiException apiException = Assertions.assertThrows(ApiException.class, () -> employeeService.inactivateById(id));
+    ApiException apiException = Assertions.assertThrows(ApiException.class, () -> employeeService.inactivateById(id));
 
-        assertNotNull(apiException.getMessage());
-    }
+    assertNotNull(apiException.getMessage());
+  }
 
-    @Test
-    void active_success() {
+  @Test
+  void active_success() {
 
-        var employee = DataMocks.buildEmployee();
-        employee.setStatus(Constants.INACTIVE);
+    var employee = DataMocks.buildEmployee();
+    employee.setStatus(Constants.INACTIVE);
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(employee);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(employee);
 
-        employeeDao.save(Mockito.any());
+    employeeDao.save(Mockito.any());
 
-        employeeService.activateById(employee.getIdEmployee());
+    employeeService.activateById(employee.getIdEmployee());
 
-        assertNotNull(employee);
-    }
+    assertNotNull(employee);
+  }
 
-    @Test
-    void active_error() {
+  @Test
+  void active_error() {
 
-        var employee = DataMocks.buildEmployee();
-        employee.setStatus(Constants.ACTIVE);
+    var employee = DataMocks.buildEmployee();
+    employee.setStatus(Constants.ACTIVE);
 
-        Mockito.when(employeeDao.findById(Mockito.anyInt()))
-                .thenReturn(employee);
+    Mockito.when(employeeDao.findById(Mockito.anyInt()))
+        .thenReturn(employee);
 
-        Integer id = employee.getIdEmployee();
+    Integer id = employee.getIdEmployee();
 
-        ApiException apiException = Assertions.assertThrows(ApiException.class, () -> employeeService.activateById(id));
+    ApiException apiException = Assertions.assertThrows(ApiException.class, () -> employeeService.activateById(id));
 
-        assertNotNull(apiException.getMessage());
-    }
+    assertNotNull(apiException.getMessage());
+  }
 
 }

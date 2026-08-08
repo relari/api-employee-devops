@@ -5,21 +5,27 @@ import pe.com.relari.fwk.spring.web.employee.model.domain.Employee;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * <b>Class:</b> Utils.<br>
+ * 
+ * @author Relari.
+ */
+
 public class Utils {
 
-    private Utils() {}
+  private Utils() {}
 
-    public static <T> T getFirstElementOrNull(List<T> list, Class<T> tClass) {
-        return (list != null && !list.isEmpty()) ? tClass.cast(list.get(0)) : null;
-    }
+  public static <T> T getFirstElementOrNull(List<T> list, Class<T> tClass) {
+    return (list != null && !list.isEmpty()) ? tClass.cast(list.get(0)) : null;
+  }
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        var data = DataMocks.buildEmployee();
-        var datas = Collections.singletonList(data);
+    var data = DataMocks.buildEmployee();
+    var datas = Collections.singletonList(data);
 
-        System.out.println(getFirstElementOrNull(datas, Employee.class));
+    System.out.println(getFirstElementOrNull(datas, Employee.class));
 
-    }
+  }
 
 }
