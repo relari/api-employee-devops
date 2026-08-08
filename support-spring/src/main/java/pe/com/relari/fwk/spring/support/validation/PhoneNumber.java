@@ -9,9 +9,9 @@ import java.lang.annotation.*;
 import static pe.com.relari.commons.constant.Regex.REGEXP_PHONE_NUMBER;
 
 /**
- * annotation: PhoneNumber.
+ * <b>Annotation:</b> PhoneNumber.<br>
  *
- * @author Relari
+ * @author Relari.
  */
 
 @Documented

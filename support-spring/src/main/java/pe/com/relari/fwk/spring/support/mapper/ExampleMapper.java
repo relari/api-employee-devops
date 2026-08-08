@@ -6,13 +6,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import pe.com.relari.fwk.spring.support.model.ApiHeaders;
-import pe.com.relari.fwk.spring.support.model.ApiResponse;
+import pe.com.relari.commons.model.api.ApiResponse;
 
 /**
- * <b>Interface:</b> StudentMapper.<br/>
+ * <b>Interface:</b> ExampleMapper.<br>
  *
- * @author Relari
- * @version 1.0.0
+ * @author Relari.
  */
 
 @Mapper

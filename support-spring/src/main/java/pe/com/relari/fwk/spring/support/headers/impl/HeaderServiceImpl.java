@@ -8,13 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 import pe.com.relari.fwk.spring.support.headers.HeaderService;
 import pe.com.relari.fwk.spring.support.headers.HeaderValues;
-//import pe.com.relari.employee.headers.HeaderService;
-//import pe.com.relari.employee.headers.HeaderValues;
 
 /**
- * Class: HeaderServiceImpl.
+ * <b>Class:</b> HeaderServiceImpl.<br>
  *
- * @author Relari
+ * @author Relari.
  */
 
 @Service

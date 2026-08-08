@@ -9,9 +9,9 @@ import java.lang.annotation.*;
 import static pe.com.relari.commons.constant.Regex.REGEXP_GENDER;
 
 /**
- * annotation: Gender.
+ * <b>Annotation:</b> Gender.<br>
  *
- * @author Relari
+ * @author Relari.
  */
 
 @Documented

@@ -13,16 +13,15 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import pe.com.relari.commons.exception.ApiException;
+import pe.com.relari.commons.model.error.ErrorResponse;
+import pe.com.relari.commons.model.error.ValidationError;
 import pe.com.relari.fwk.spring.handler.error.config.ErrorConfig;
-import pe.com.relari.fwk.spring.handler.error.exception.ApiException;
-import pe.com.relari.fwk.spring.handler.error.model.ErrorResponse;
-import pe.com.relari.fwk.spring.handler.error.model.ValidationError;
-
 
 /**
  * <b>Class:</b> GlobalExceptionHandler.<br>
  *
- * @author Relari
+ * @author Relari.
  */
 
 @Slf4j

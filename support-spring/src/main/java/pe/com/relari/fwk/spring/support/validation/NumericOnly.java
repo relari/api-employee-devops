@@ -9,9 +9,9 @@ import java.lang.annotation.*;
 import static pe.com.relari.commons.constant.Regex.REGEXP_ONLY_NUMBER;
 
 /**
- * annotation: NumericOnly.
+ * <b>Annotation:</b> NumericOnly.<br>
  *
- * @author Relari
+ * @author Relari.
  */
 
 @Documented

@@ -15,6 +15,7 @@
     <modules>
         <module>audit</module>
         <module>handler-error-spring</module>
+        <module>handler-error-spring-reactive</module>
         <module>support-spring</module>
         <module>web</module>
     </modules>

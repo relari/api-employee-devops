@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * interface: HeaderService.
+ * <b>Interface:</b> HeaderService.<br>
  *
- * @author Relari
+ * @author Relari.
  */
 
 public interface HeaderService {
