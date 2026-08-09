@@ -65,8 +65,8 @@ class EmployeeControllerTest {
     var response = controller.findAll2();
 
     assertNotNull(response);
-    assertEquals("OK", response.code());
-    assertEquals(200, response.status());
+    assertEquals("OK", response.getCode());
+    assertEquals(200, response.getStatus());
   }
 
 

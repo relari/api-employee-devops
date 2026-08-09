@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import pe.com.relari.commons.model.error.ErrorResponse;
-import pe.com.relari.fwk.spring.handler.error.util.ErrorUtility;
+import pe.com.relari.fwk.spring.support.util.ResponseUtils;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -43,7 +43,7 @@ public class ErrorConfig {
     if (shouldIncludeStackTrace()) {
       errorResponse.setThrowable(throwable);
     }
-    return ErrorUtility.getErrorResponseEntity(errorResponse);
+    return ResponseUtils.toErrorResponse(errorResponse);
   }
 
   public ResponseEntity<ErrorResponse> getErrorByStatusCode(String statusCode, Throwable throwable) {
@@ -52,7 +52,7 @@ public class ErrorConfig {
     if (shouldIncludeStackTrace()) {
       errorResponse.setThrowable(throwable);
     }
-    return ErrorUtility.getErrorResponseEntity(errorResponse);
+    return ResponseUtils.toErrorResponse(errorResponse);
   }
 
   public ResponseEntity<ErrorResponse> getErrorByStatusCode(String statusCode, Object details, Throwable throwable) {
@@ -64,6 +64,6 @@ public class ErrorConfig {
     if (details != null) {
       errorResponse.setDetails(details);
     }
-    return ErrorUtility.getErrorResponseEntity(errorResponse);
+    return ResponseUtils.toErrorResponse(errorResponse);
   }
 }
