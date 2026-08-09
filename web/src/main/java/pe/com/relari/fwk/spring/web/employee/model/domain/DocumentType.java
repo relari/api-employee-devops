@@ -15,7 +15,10 @@ public enum DocumentType {
 
     DNI("Documento Nacional de Identidad"),
     PASAPORTE("Pasaporte Extranjero"),
-    RUC("Registro Único de Contribuyentes");
+    RUC("Registro Único de Contribuyentes"),
+    CARNET_DE_EXTRANJERIA("Carnet de Extranjería"),
+    PARTIDA_DE_NACIMIENTO("Partida de Nacimiento"),
+    OTROS("Otros");
 
     private final String description;
 

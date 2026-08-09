@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import pe.com.relari.commons.constant.Constants;
-import pe.com.relari.commons.utility.DateUtility;
+import pe.com.relari.commons.util.DateUtil;
 import pe.com.relari.fwk.spring.web.employee.model.api.EmployeeRequest;
 import pe.com.relari.fwk.spring.web.employee.model.api.EmployeeResponse;
 import pe.com.relari.fwk.spring.web.employee.model.domain.Employee;
@@ -19,19 +19,19 @@ import java.util.List;
  * @author Relari.
  */
 
-@Mapper(imports = { DateUtility.class, Constants.class, LocalDateTime.class })
+@Mapper(imports = { DateUtil.class, Constants.class, LocalDateTime.class })
 public interface DomainToDtoMapper {
 
     DomainToDtoMapper INSTANCE = Mappers.getMapper(DomainToDtoMapper.class);
 
     @Mapping(target = "id", source = "idEmployee")
     @Mapping(target = "gender", expression = "java( employee.getGender().getDescription() )")
-    @Mapping(target = "dateOfBirth", expression = "java( DateUtility.formatDate(employee.getDateOfBirth()) )")
+    @Mapping(target = "dateOfBirth", expression = "java( DateUtil.formatDate(employee.getDateOfBirth()) )")
     @Mapping(target = "company.jobTitle", expression = "java( company.getJobTitle().getDescription() )")
     EmployeeResponse mapEmployeeResponse(Employee employee);
 
     @Mapping(target = "idEmployee", ignore = true)
-    @Mapping(target = "dateOfBirth", expression = "java( DateUtility.parseLocalDate(employeeRequest.getDateOfBirth()) )")
+    @Mapping(target = "dateOfBirth", expression = "java( DateUtil.parseLocalDate(employeeRequest.getDateOfBirth()) )")
     @Mapping(target = "createdAt", expression = "java( LocalDateTime.now() )")
     @Mapping(target = "status", expression = "java( Constants.ACTIVE )")
     Employee mapEmployee(EmployeeRequest employeeRequest);
